@@ -1,0 +1,21 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env bash
+
+check_command() {
+    command
+    if [ $? -eq 0 ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+check_command xcode-select -p
+
+if [ $? -eq 0 ]; then
+    echo "Xcode cli tools already installed"
+else
+    xcode-select --install
+fi
+{{ end }}
+

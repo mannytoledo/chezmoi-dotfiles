@@ -1,0 +1,21 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env bash
+
+brew install starship
+brew install difftastic
+brew install pyenv pyenv-virtualenv pyenv-virtualenvwrapper
+brew install --cask 1password/tap/1password-cli
+
+brew install ag
+brew install jq
+brew install direnv
+
+brew install hub
+brew install jesseduffield/lazygit/lazygit
+
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-font
+brew install fira-code-nerd-font
+
+brew install neovim
+{{ end }}

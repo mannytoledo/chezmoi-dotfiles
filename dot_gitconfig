@@ -1,0 +1,52 @@
+[user]
+  email = mtoledo@adobe.com
+  name = Manny Toledo
+[core]
+	excludesfile = ~/.gitignore_global
+[merge]
+[push]
+  default = simple
+[alias]
+  newmaster = "!sh -c 'git fetch upstream && git checkout -b feature/$1 upstream/master' -"
+  newmain = "!sh -c 'git fetch upstream && git checkout -b feature/$1 upstream/main' -"
+  fixmaster = "!sh -c 'git fetch upstream && git checkout -b fix/$1 upstream/master' -"
+  fixmain = "!sh -c 'git fetch upstream && git checkout -b fix/$1 upstream/main' -"
+  update= "!sh -c 'git fetch upstream && git checkout -b update/$1 upstream/master' -"
+  updatesolo = "!sh -c 'git fetch && git checkout -b update/$1 master' -"
+  newsolo = "!sh -c 'git fetch && git checkout -b feature/$1 master' -"
+  fixsolo = "!sh -c 'git fetch && git checkout -b fix/$1 master' -"
+  clbo = !git remote prune origin && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+  clbu = !git remote prune upstream && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+  review = !git push origin HEAD && hub pull-request
+  release-notessolo = !git fetch upstream && git log `git describe --abbrev=0 --tags`..upstream/master  --merges --pretty=%s%n%b%n
+  release-notes = !git fetch origin && git log `git describe --abbrev=0 --tags`..master  --merges --pretty=%s%n%b%n
+  changelog = !git log --oneline --decorate
+  bcl = !git log `git show -s :/^Merge --pretty=%h`...HEAD --pretty=format:'%C(red)%h%Creset %C(yellow)(%cr)%Creset %s %b %Cblue<%an>%Creset' --abbrev-commit
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  own = !hub fork && git remote rename origin upstream &&  git remote rename mannytoledo origin
+  cown = !hub fork && git remote rename origin upstream && git remote rename mtoledo origin
+#  get = "!bash -c 'url=$1; re=\'^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$\'; if [[ $url =~ $re ]]; then; protocol=${BASH_REMATCH[1]}; separator=${BASH_REMATCH[2]}; hostname=${BASH_REMATCH[3]}; user=${BASH_REMATCH[4]}; repo=${BASH_REMATCH[5]}; fi; git clone $url ${HOME}/code/$hostname/$user/$repo'"
+  #lp = "!sh 'git branch -r | awk '{print $1}\' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk \'{print $1}\' | xargs git branch -d' -"
+[gitchangelog]
+  rc-path = /Users/mtoledo/.gitchangelog.rc
+[filter "media"]
+  clean = git media clean %f
+  smudge = git media smudge %f
+  required = true
+[credential]
+	helper = osxkeychain
+; [color "diff-highlight"]
+; 	oldNormal = red bold
+; 	oldHighlight = red bold 52
+; 	newNormal = green bold
+; 	newHighlight = green bold 22
+[color]
+	pager = false
+[hub]
+	host = git.corp.adobe.com
+[init]
+	defaultBranch = main
+[url "ssh://git@git.corp.adobe.com/"]
+	insteadOf = https://git.corp.adobe.com/
+[diff]
+	external = difft
