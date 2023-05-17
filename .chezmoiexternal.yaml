@@ -1,0 +1,18 @@
+.zprezto:
+  type: archive
+  url: 'https://github.com/mannytoledo/prezto/archive/refs/heads/master.zip'
+  exact: true
+  stripComponents: 1
+  refreshPeriod: 360h
+.zprezto/contrib:
+  type: archive
+  url: 'https://github.com/belak/prezto-contrib/archive/refs/heads/master.zip'
+  exact: true
+  stripComponents: 1
+  refreshPeriod: 360h
+.zprezto/contrib/enhancd/external:
+  type: archive
+  url: 'https://github.com/b4b4r07/enhancd/archive/c6967f7f70f18991a5f9148996afffc0d3ae76e4.zip'
+  exact: true
+  stripComponents: 1
+  refreshPeriod: 360h
