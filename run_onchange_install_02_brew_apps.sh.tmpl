@@ -1,21 +1,47 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/usr/bin/env bash
 
+# prompt
 brew install starship
 brew install difftastic
-brew install pyenv pyenv-virtualenv pyenv-virtualenvwrapper
 brew install --cask 1password/tap/1password-cli
 
-brew install ag
-brew install jq
-brew install direnv
+# settings backup
+brew install mackup
 
+# search
+brew install ag
+brew install rg
+
+# text data
+brew install jq
+brew install yq
+brew install gron
+brew install fx
+brew install fzf
+$(brew --prefix)/opt/fzf/install
+brew install spacer
+
+# dev tools
+brew install direnv
+brew install grip
 brew install hub
+brew install gh
 brew install jesseduffield/lazygit/lazygit
+brew install pyenv pyenv-virtualenv pyenv-virtualenvwrapper
 
 brew tap homebrew/cask-fonts
-brew install font-hack-nerd-font
 brew install fira-code-nerd-font
 
 brew install neovim
+
+# Kubernetes tools
+brew install kubectl
+brew install kubectx
+brew install Azure/kubelogin/kubelogin
+brew install helm
+
+# Docker tools
+brew install colima
+brew install docker
 {{ end }}
