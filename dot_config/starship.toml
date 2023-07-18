@@ -1,0 +1,27 @@
+[python]
+# Only use the `python3` binary to get the version.
+# python_binary = "/Users/mtoledo/.pyenv/versions/3.9.1/bin/python"
+#detect_extensions = []
+pyenv_version_name = true
+pyenv_prefix = ""
+
+[cmd_duration]
+min_time = 0
+
+[kubernetes]
+# format = 'on [⛵ $context \($namespace\)](dimmed green) '
+#format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
+disabled = false
+
+[aws]
+
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va6"
+us-west-2 = "or2"
+
+[status]
+disabled = true
+
+[docker_context]
+disabled = true
